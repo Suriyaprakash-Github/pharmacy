@@ -1,23 +1,24 @@
 import React, { useContext, useState } from "react";
-import InventoryContext from "./store/inventory-context";
+// import InventoryContext from "./store/inventory-context";
 import CartContext from "./store/cart-context";
 import Nav from "react-bootstrap/Nav";
+import Cart from "./Cart";
 
 const InventoryButton = (props) => {
-  const inventoryCtx = useContext(InventoryContext);
+  // const inventoryCtx = useContext(InventoryContext);
   const cartCtx = useContext(CartContext);
 
-  //   const numberOfInventoryItems = inventoryCtx.items.length;
+  // const numberOfInventoryItems = inventoryCtx.items.length;
   const numberOfCartItems = cartCtx.cartItems.length;
-  console.log("cartitems", cartCtx.cartItems);
-  console.log("inventoryItems", inventoryCtx.items);
-  // const [modalShow, setModalShow] = useState(false);
+  // console.log("cartitems", cartCtx.cartItems);
+  // console.log("inventoryItems", inventoryCtx.items);
+  const [modalShow, setModalShow] = useState(false);
 
   return (
     <>
-      <Nav.Link
+      {/* <Nav.Link
         style={{ color: "black", margin: "10px", display: "flex" }}
-        // onClick={() => setModalShow(true)}
+        onClick={() => setModalShow(true)}
       >
         Inventory
         <div
@@ -33,14 +34,14 @@ const InventoryButton = (props) => {
             color: "black",
           }}
         >
-          {/* {numberOfInventoryItems} */}
+          {numberOfInventoryItems}
         </div>
-      </Nav.Link>
-      {/* <Cart show={modalShow} onHide={() => setModalShow(false)} /> */}
+      </Nav.Link> */}
+      <Cart show={modalShow} onHide={() => setModalShow(false)} />
 
       <Nav.Link
         style={{ color: "black", margin: "10px", display: "flex" }}
-        // onClick={() => setModalShow(true)}
+        onClick={() => setModalShow(true)}
       >
         Cart
         <div

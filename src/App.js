@@ -4,7 +4,6 @@ import InventoryButton from "./components/InventoryButton";
 import axios from "axios";
 
 import "./App.css";
-import AddToCart from "./components/AddToCart";
 import AddToInventory from "./components/AddToInventory";
 import DisplayInventory from "./components/DisplayInventory";
 import InventoryProvider from "./components/store/InventoryProvider";
@@ -20,24 +19,25 @@ function App() {
         },
       })
       .then((res) => {
+        console.log(res.data);
         res.data.map((item) => {
-          return inventoryCtx.addItem({
-            uniqueId: item.value,
-            name: item.value,
-            description: item.value,
-            price: item.value,
-            quantity: item.value,
-          });
+          const received = {
+            uniqueId: item.uniqueId,
+            name: item.name,
+            description: item.description,
+            price: item.price,
+            quantity: item.quantity,
+          };
+          return inventoryCtx.addItem(received);
         });
       });
-  });
+  }, []);
   return (
     <div style={{ display: "flex" }}>
       <InventoryProvider>
         <InventoryButton />
         <AddToInventory />
         <DisplayInventory />
-        <AddToCart />
       </InventoryProvider>
     </div>
   );

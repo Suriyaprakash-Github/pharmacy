@@ -7,6 +7,7 @@ const DisplayInventory = () => {
   const cartCtx = useContext(CartContext);
 
   const addToCartHandler = (item) => {
+    console.log(item);
     cartCtx.addCartItem(item);
   };
 
@@ -25,8 +26,7 @@ const DisplayInventory = () => {
       <span style={{ border: "1px solid black", margin: "0.25rem" }}>
         Available Quantity: {item.quantity}
       </span>
-      <button onClick={addToCartHandler.bind(null, item)}>Add to Cart</button>
-      {console.log(item)}
+      <button onClick={addToCartHandler(item)}>Add to Cart</button>
     </div>
   ));
 
